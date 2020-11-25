@@ -17,19 +17,28 @@ public class PlayerController : MonoBehaviour
 
     bool isGround = true;  // 地面に着いているのか
 
-    
+    //string deadAreaTag = "DeadArea";
+
+    Vector3 defaultPosition;
+
     // Start is called before the first frame update
     void Start()
     {
         this.animator = GetComponent<Animator>();
         this.spriteRenderer = GetComponent<SpriteRenderer>();
         this.rigidbody2D = GetComponent<Rigidbody2D>();
+        this.defaultPosition = transform.position;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(GameManager.Instance.GetState()!= GameManager.State.Game)
+        if (GameManager.Instance.GetState() == GameManager.State.Reset)
+        {
+            Reset();
+        }
+
+        if (GameManager.Instance.GetState()!= GameManager.State.Game)
         {
             return;
         }
@@ -85,5 +94,22 @@ public class PlayerController : MonoBehaviour
     {
         return this.spriteRenderer.flipX;
     }
+    /*
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag == deadAreaTag)
+        {
+            ReceiveDamage(false);
+        }
+        
+    }
+    */
+
+    void Reset()
+    {
+        transform.position = this.defaultPosition;   
+    }
+
+
 
 }

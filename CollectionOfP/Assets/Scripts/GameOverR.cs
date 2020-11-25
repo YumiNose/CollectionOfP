@@ -5,9 +5,9 @@ using UnityEngine;
 public class GameOverR : MonoBehaviour
 {
     // Start is called before the first frame update
-    private void Start()
+    void Start()
     {
-        Invoke("Destroy", 5);
+        //Invoke("Destroy", 5);
     }
 
     // Update is called once per frame
@@ -15,22 +15,19 @@ public class GameOverR : MonoBehaviour
     {
         
     }
-
+    /*
     void Destroy()
     {
         Destroy(gameObject);
         Debug.Log("消えた時間" + Time.time);
     }
-
-
-    /*
-    private void OnTriggerEnter(Collider other)
-    {
-
-        if (other.gameObject.tag == "Finish")
-        {
-            Debug.Log("GameOver");
-        }
-    }
     */
+
+    
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        Debug.Log("GameOver");
+        GameManager.Instance.ChangeState(GameManager.State.Dead);
+    }
+    //other.gameObject.tag == "Finish"
 }

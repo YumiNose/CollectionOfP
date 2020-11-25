@@ -26,13 +26,14 @@ public class GameManager : MonoBehaviour
         Game,       // ゲーム中
         Dead,       // 死んだ演出用
         Clear,      // クリア演出用
+        Reset,      // リセット用
     }
 
     State state = State.Ready;  // 状態を管理する変数
 
     float timer = 0;  // 汎用タイマー
 
-    [SerializeField]
+    int zanki = 3;  // 残り残基
 
     
 
@@ -59,6 +60,7 @@ public class GameManager : MonoBehaviour
             case State.Game: Game(); break;
             case State.Dead: Dead(); break;
             case State.Clear: Clear(); break;
+            case State.Reset: Reset(); break;
         }
 
     }
@@ -97,24 +99,40 @@ public class GameManager : MonoBehaviour
             ChangeState(State.Ready);
         }
 
-        /*
-        if(Input.GetKeyDown(KeyCode.0))
-        {
-
-        }
-        */
-
         
     }
 
     void Dead()
     {
+        // タイマーでステートを切り替える
+        this.timer -= Time.deltaTime;
 
+        if (this.timer <= 0)
+        {
+            ChangeState(State.Reset);
+        }
     }
 
     void Clear()
     {
 
+    }
+
+    void Reset()
+    {
+        this.zanki--;
+        if(this.zanki == 0)
+        {
+            // 要変更！！！！！！！
+            ChangeState(State.Dead);
+            Debug.Log("完全なゲームオーバー");
+        }
+        else
+        {
+            ChangeState(State.Game);
+        }
+        
+        
     }
 
     // ステートを切り替える
@@ -150,6 +168,13 @@ public class GameManager : MonoBehaviour
 
                 }
                 break;
+
+            case State.Reset:
+                {
+                    // ステートを切り替えた際に後始末が必要ならここに記述
+
+                }
+                break;
         }
 
         this.state = next;  // ステートの切り替え
@@ -174,6 +199,9 @@ public class GameManager : MonoBehaviour
             case State.Dead:
                 {
                     // ステートを切り替えた際に初期化が必要ならここに記述
+                    
+
+                    this.timer = 4f;
 
                 }
                 break;
@@ -185,6 +213,12 @@ public class GameManager : MonoBehaviour
                 }
                 break;
 
+            case State.Reset:
+                {
+                    // ステートを切り替えた際に後始末が必要ならここに記述
+
+                }
+                break;
 
         }
 

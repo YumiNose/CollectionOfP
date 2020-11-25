@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
+    /*
     Vector2 defaultPosition;  // 初期位置
     Quaternion defaultRotation;  // 初期向き
 
@@ -56,5 +57,11 @@ public class EnemyController : MonoBehaviour
             // 再配置を考え世界の果てに飛ばす
             transform.position = new Vector3(0, -500f, 0);
         }
+    }
+    */
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        Debug.Log("GameOver");
     }
 }
