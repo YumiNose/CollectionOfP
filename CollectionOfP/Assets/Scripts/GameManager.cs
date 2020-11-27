@@ -115,7 +115,10 @@ public class GameManager : MonoBehaviour
 
     void Clear()
     {
-
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            ChangeState(State.Ready);
+        }
     }
 
     void Reset()
