@@ -7,7 +7,7 @@ public class GameOverR : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //Invoke("Destroy", 5);
+        
     }
 
     // Update is called once per frame
@@ -15,13 +15,6 @@ public class GameOverR : MonoBehaviour
     {
         
     }
-    /*
-    void Destroy()
-    {
-        Destroy(gameObject);
-        Debug.Log("消えた時間" + Time.time);
-    }
-    */
 
     
     void OnTriggerEnter2D(Collider2D other)
@@ -29,5 +22,5 @@ public class GameOverR : MonoBehaviour
         Debug.Log("GameOver");
         GameManager.Instance.ChangeState(GameManager.State.Dead);
     }
-    //other.gameObject.tag == "Finish"
+    
 }

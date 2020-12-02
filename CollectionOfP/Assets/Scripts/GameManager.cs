@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 // 全体の進行を管理するクラス
 public class GameManager : MonoBehaviour
@@ -88,18 +89,28 @@ public class GameManager : MonoBehaviour
         {
             ChangeState(State.Game);
         }
-        // Debug.Log("" + (int)(this.timer + 1f));
         
     }
 
     void Game()
     {
+        /*
         if(Input.GetKeyDown(KeyCode.R))
         {
             ChangeState(State.Ready);
         }
+        */
 
-        
+        // 先生に必ず聞くこと！！！！　ゴールについているタグ"GoalPoint"に触れたらゲームクリアシーンへ遷移したい
+        void OnTriggerStay2D(Collider2D other)
+        {
+            if(other.gameObject.tag == "GoalPoint")
+            {
+                Debug.Log("やったね！ゴール！");
+                ChangeState(State.Clear);
+            }
+        }
+
     }
 
     void Dead()
@@ -123,12 +134,11 @@ public class GameManager : MonoBehaviour
 
     void Reset()
     {
+        // 残基が０になったらGameOverシーンに遷移する
         this.zanki--;
         if(this.zanki == 0)
         {
-            // 要変更！！！！！！！
-            ChangeState(State.Dead);
-            Debug.Log("完全なゲームオーバー");
+            SceneManager.LoadScene("GameOver");
         }
         else
         {
@@ -188,6 +198,7 @@ public class GameManager : MonoBehaviour
             case State.Ready:
                 {
                     // ステートを切り替えた際に初期化が必要ならここに記述
+                    // ReadyからGameまで３秒
                     this.timer = 3f;
                 }
                 break;
@@ -203,7 +214,7 @@ public class GameManager : MonoBehaviour
                 {
                     // ステートを切り替えた際に初期化が必要ならここに記述
                     
-
+                    // 死んでから復活するまで４秒
                     this.timer = 4f;
 
                 }

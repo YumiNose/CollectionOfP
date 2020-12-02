@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField]
-    float speed = 4;  // 移動速度
+    float speed = 3;  // 移動速度
 
     Animator animator;
 
@@ -94,6 +94,7 @@ public class PlayerController : MonoBehaviour
     {
         return this.spriteRenderer.flipX;
     }
+
     /*
     void OnTriggerEnter2D(Collider2D collision)
     {
