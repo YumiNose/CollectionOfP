@@ -34,7 +34,7 @@ public class GameManager : MonoBehaviour
 
     float timer = 0;  // 汎用タイマー
 
-    int zanki = 3;  // 残り残基
+    public int zanki = 3;  // 残り残基
 
     
 
@@ -48,6 +48,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        // Readyから開始する
         ChangeState(State.Ready);
     }
 
@@ -66,51 +67,17 @@ public class GameManager : MonoBehaviour
 
     }
 
-    public void TimeScale(float scale)
-    {
-        Time.timeScale = scale;
-    }
-    public void ReseTimeScale()
-    {
-        Time.timeScale = 1f;
-    }
-
 
     void Ready()
     {
         
-        // タイマーでステートを切り替える
-        this.timer -= Time.deltaTime;
-
-        //カウントダウンUI更新
-        UIManager.Instance.CountDown(this.timer);
-
-        if(this.timer <= 0)
-        {
-            ChangeState(State.Game);
-        }
+       ChangeState(State.Game);
         
     }
 
     void Game()
     {
-        /*
-        if(Input.GetKeyDown(KeyCode.R))
-        {
-            ChangeState(State.Ready);
-        }
-        */
-
-        // 先生に必ず聞くこと！！！！　ゴールについているタグ"GoalPoint"に触れたらゲームクリアシーンへ遷移したい
-        void OnTriggerStay2D(Collider2D other)
-        {
-            if(other.gameObject.tag == "GoalPoint")
-            {
-                Debug.Log("やったね！ゴール！");
-                ChangeState(State.Clear);
-            }
-        }
-
+        
     }
 
     void Dead()
@@ -126,10 +93,7 @@ public class GameManager : MonoBehaviour
 
     void Clear()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            ChangeState(State.Ready);
-        }
+        SceneManager.LoadScene("GameClear");
     }
 
     void Reset()
@@ -198,7 +162,7 @@ public class GameManager : MonoBehaviour
             case State.Ready:
                 {
                     // ステートを切り替えた際に初期化が必要ならここに記述
-                    // ReadyからGameまで３秒
+                    // ReadyからGame開始まで３秒
                     this.timer = 3f;
                 }
                 break;

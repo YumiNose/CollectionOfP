@@ -15,7 +15,7 @@ TagManager:
   - UI
   - 
   - 
-  - 
+  - PT1
   - 
   - 
   - 
@@ -42,4 +42,7 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: PT
+    uniqueID: 1869747091
     locked: 0

@@ -12,11 +12,14 @@ public class EnemyController : MonoBehaviour
 
     Rigidbody2D rigidbody2D;
 
+    Animator animator;
+
     enum State
     {
        Wait,
        Found,
        Chase,
+       Petrify,
     }
     State state;
 
@@ -33,6 +36,7 @@ public class EnemyController : MonoBehaviour
 
         this.player = GameObject.Find("Player");
         this.rigidbody2D = GetComponent<Rigidbody2D>();
+        this.animator = GetComponent<Animator>();
     }
 
     // 再配置＆再表示
@@ -47,6 +51,11 @@ public class EnemyController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // 黒蛇 回収
+        if(Input.GetKeyDown(KeyCode.P))
+        {
+            Destroy(this.gameObject, 1.0f);
+        }
 
 
         // GameManagerのStateがGame以外でもなにか動かしたい場合は
@@ -77,49 +86,63 @@ public class EnemyController : MonoBehaviour
                         if (distance < 11 && distance > -11)
                         {
                             Debug.Log("発見");
-                            this.rigidbody2D.AddForce(Vector2.up * 100);
-                            this.timer = 1;
+                            this.rigidbody2D.AddForce(Vector2.up * 130);  // Kを押した瞬間に上にミニジャンプする
+                            this.timer = 1;  // タイマーを1にセット
 
                             this.state = State.Found;
+
+                            // 敵のアニメーション変更 (発見)
+                            this.animator.SetInteger("State", 1);
                         }
                     }
                 }
                 break;
+
             case State.Found:
                 {
                     this.timer -= Time.deltaTime;
-                    if(this.timer <= 0)
+                    // ジャンプして1秒経ったらChaseに移行
+                    if (this.timer <= 0)
                     {
                         this.state = State.Chase;
+
+                        // 敵のアニメーション変更 (突進)
+                        this.animator.SetInteger("State", 2);
                     }
                 }
                 break;
+
             case State.Chase:
                 {
                     // 左側に移動
-                    transform.Translate(-1f * Time.deltaTime, 0, 0);
+                    transform.Translate(-2f * Time.deltaTime, 0, 0);
+
+                    if (Input.GetKeyDown(KeyCode.I))
+                    {
+                        float distance = Vector3.Distance(transform.position, this.player.transform.position);
+
+                        if (distance < 10 && distance > -10)
+                        {
+                            Debug.Log("今、石化しているよ");
+
+                            this.state = State.Petrify;
+
+                            // 敵のアニメーション変更 (石化)
+                            this.animator.SetInteger("State", 3);
+                        }
+                    }
                 }
                 break;
 
+            case State.Petrify:
+                {
+                    
+
+
+                }
+                break;
 
         }
-
-
-
-        // 移動スクリプト
-        //transform.Translate(1f * Time.deltaTime, 0, 0);
-
-        /*
-        // 死ぬ処理（仮）
-        if(Input.GetKeyDown(KeyCode.D))
-        {
-            // 再配置を考え世界の果てに飛ばす
-            transform.position = new Vector3(0, -500f, 0);
-        }
-        */
-
-
-        
 
     }
 
