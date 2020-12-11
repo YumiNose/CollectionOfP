@@ -42,8 +42,11 @@ public class EnemyController : MonoBehaviour
     // 再配置＆再表示
     void Restart()
     {
-        this.defaultPosition = this.transform.position;  // チェックポイントを超えていたらこの２行
-        this.defaultRotation = this.transform.rotation;  // 超えていなけれなこの処理をする
+        this.animator.SetInteger("State", 0);
+
+        // 再表示はできたけどアニメーションが変更されなくなっている！！！！
+        this.transform.position = this.defaultPosition;  // 
+        this.transform.rotation = this.defaultRotation;  // 
         
     }
 
@@ -51,11 +54,7 @@ public class EnemyController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // 黒蛇 回収
-        if(Input.GetKeyDown(KeyCode.P))
-        {
-            Destroy(this.gameObject, 1.0f);
-        }
+        
 
 
         // GameManagerのStateがGame以外でもなにか動かしたい場合は
@@ -65,6 +64,7 @@ public class EnemyController : MonoBehaviour
         // GameManagerのStateがReadyの時に再配置を行う
         if (GameManager.Instance.GetState() == GameManager.State.Ready)
         {
+            
             Restart();  // 再配置
             
         }
@@ -121,7 +121,7 @@ public class EnemyController : MonoBehaviour
                     {
                         float distance = Vector3.Distance(transform.position, this.player.transform.position);
 
-                        if (distance < 10 && distance > -10)
+                        if (distance < 5 && distance > -5)
                         {
                             Debug.Log("今、石化しているよ");
 
@@ -136,7 +136,13 @@ public class EnemyController : MonoBehaviour
 
             case State.Petrify:
                 {
-                    
+                    // 黒蛇 回収
+                    if (Input.GetKeyDown(KeyCode.P))
+                    {
+                        Debug.Log("黒蛇に食われて消えた状態");
+                        Invoke("ActiveFalse", 1.0f);
+                        
+                    }
 
 
                 }
@@ -145,5 +151,11 @@ public class EnemyController : MonoBehaviour
         }
 
     }
+    void ActiveFalse()
+    {
+        transform.position = new Vector3(9999, 100, 9999);
+    }
+
+
 
 }

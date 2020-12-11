@@ -5314,7 +5314,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "C\u3092\u62BC\u3057\u3066\u30BF\u30A4\u30C8\u30EB\u753B\u9762\u3078"
+  m_Text: "Space\u3092\u62BC\u3057\u3066\u30BF\u30A4\u30C8\u30EB\u753B\u9762\u3078"
 --- !u!222 &1746044854
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -5340,7 +5340,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4304763869332708, guid: 2547a66872ebe45408ace228820a79e1, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.2
+      value: -2.1
       objectReference: {fileID: 0}
     - target: {fileID: 4304763869332708, guid: 2547a66872ebe45408ace228820a79e1, type: 3}
       propertyPath: m_LocalPosition.z

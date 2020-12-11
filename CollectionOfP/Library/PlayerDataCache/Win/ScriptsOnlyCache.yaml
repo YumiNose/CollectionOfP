@@ -3,16 +3,17 @@ ScriptsOnlyBuild:
     Assembly-CSharp.dll:
     - BackGroundController
     - CameraController2
-    - CountDownUIController
+    - ClearManager
     - EnemyController
     - GameManager
+    - GameOverManager
     - GameOverR
     - GoalController
     - PlayerController
     - SaveManager
     - TitleManager
     - TransitionUIController
-    - UIManager
+    - ZankiUIController
     Unity.2D.Animation.Editor.dll:
     - UnityEditor.U2D.Animation.BoneGizmo
     Unity.2D.SpriteShape.Runtime.dll:
@@ -29,8 +30,10 @@ ScriptsOnlyBuild:
     UnityEditor.Graphs.dll:
     - UnityEditor.Graphs.AnimationBlendTree.Graph
     - UnityEditor.Graphs.AnimationBlendTree.GraphGUI
+    - UnityEditor.Graphs.AnimationStateMachine.AnyStateNode
     - UnityEditor.Graphs.AnimationStateMachine.Graph
     - UnityEditor.Graphs.AnimationStateMachine.GraphGUI
+    - UnityEditor.Graphs.AnimationStateMachine.StateNode
     - UnityEditor.Graphs.AnimatorControllerTool
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
@@ -44,6 +47,104 @@ ScriptsOnlyBuild:
     - UnityEngine.UI.Image
     - UnityEngine.UI.Text
   sceneClasses:
+    Assets/Scenes/GameClear.unity:
+    - Class: 1
+      Script: {instanceID: 0}
+    - Class: 4
+      Script: {instanceID: 0}
+    - Class: 20
+      Script: {instanceID: 0}
+    - Class: 21
+      Script: {instanceID: 0}
+    - Class: 28
+      Script: {instanceID: 0}
+    - Class: 48
+      Script: {instanceID: 0}
+    - Class: 81
+      Script: {instanceID: 0}
+    - Class: 104
+      Script: {instanceID: 0}
+    - Class: 114
+      Script: {instanceID: 11232}
+    - Class: 114
+      Script: {instanceID: 11546}
+    - Class: 114
+      Script: {instanceID: 12304}
+    - Class: 114
+      Script: {instanceID: 12742}
+    - Class: 114
+      Script: {instanceID: 13860}
+    - Class: 114
+      Script: {instanceID: 14500}
+    - Class: 115
+      Script: {instanceID: 0}
+    - Class: 128
+      Script: {instanceID: 0}
+    - Class: 157
+      Script: {instanceID: 0}
+    - Class: 196
+      Script: {instanceID: 0}
+    - Class: 198
+      Script: {instanceID: 0}
+    - Class: 199
+      Script: {instanceID: 0}
+    - Class: 213
+      Script: {instanceID: 0}
+    - Class: 222
+      Script: {instanceID: 0}
+    - Class: 223
+      Script: {instanceID: 0}
+    - Class: 224
+      Script: {instanceID: 0}
+    Assets/Scenes/GameOver.unity:
+    - Class: 1
+      Script: {instanceID: 0}
+    - Class: 4
+      Script: {instanceID: 0}
+    - Class: 20
+      Script: {instanceID: 0}
+    - Class: 21
+      Script: {instanceID: 0}
+    - Class: 28
+      Script: {instanceID: 0}
+    - Class: 43
+      Script: {instanceID: 0}
+    - Class: 48
+      Script: {instanceID: 0}
+    - Class: 81
+      Script: {instanceID: 0}
+    - Class: 104
+      Script: {instanceID: 0}
+    - Class: 114
+      Script: {instanceID: 11232}
+    - Class: 114
+      Script: {instanceID: 11310}
+    - Class: 114
+      Script: {instanceID: 11546}
+    - Class: 114
+      Script: {instanceID: 12304}
+    - Class: 114
+      Script: {instanceID: 13860}
+    - Class: 114
+      Script: {instanceID: 14500}
+    - Class: 115
+      Script: {instanceID: 0}
+    - Class: 128
+      Script: {instanceID: 0}
+    - Class: 157
+      Script: {instanceID: 0}
+    - Class: 196
+      Script: {instanceID: 0}
+    - Class: 198
+      Script: {instanceID: 0}
+    - Class: 199
+      Script: {instanceID: 0}
+    - Class: 222
+      Script: {instanceID: 0}
+    - Class: 223
+      Script: {instanceID: 0}
+    - Class: 224
+      Script: {instanceID: 0}
     Assets/Scenes/GameScene.unity:
     - Class: 1
       Script: {instanceID: 0}
@@ -58,6 +159,8 @@ ScriptsOnlyBuild:
     - Class: 48
       Script: {instanceID: 0}
     - Class: 50
+      Script: {instanceID: 0}
+    - Class: 58
       Script: {instanceID: 0}
     - Class: 60
       Script: {instanceID: 0}
@@ -78,42 +181,36 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 11232}
     - Class: 114
-      Script: {instanceID: 11410}
+      Script: {instanceID: 11412}
     - Class: 114
-      Script: {instanceID: 11544}
+      Script: {instanceID: 11600}
     - Class: 114
-      Script: {instanceID: 11598}
+      Script: {instanceID: 11638}
     - Class: 114
-      Script: {instanceID: 11636}
+      Script: {instanceID: 11866}
     - Class: 114
-      Script: {instanceID: 12286}
+      Script: {instanceID: 12290}
     - Class: 114
-      Script: {instanceID: 12300}
+      Script: {instanceID: 12304}
     - Class: 114
-      Script: {instanceID: 12318}
+      Script: {instanceID: 12322}
     - Class: 114
-      Script: {instanceID: 12536}
+      Script: {instanceID: 12642}
     - Class: 114
-      Script: {instanceID: 12634}
+      Script: {instanceID: 12716}
     - Class: 114
-      Script: {instanceID: 12638}
+      Script: {instanceID: 13124}
     - Class: 114
-      Script: {instanceID: 12712}
+      Script: {instanceID: 13202}
     - Class: 114
-      Script: {instanceID: 13118}
+      Script: {instanceID: 13300}
     - Class: 114
-      Script: {instanceID: 13196}
+      Script: {instanceID: 13860}
     - Class: 114
-      Script: {instanceID: 13294}
+      Script: {instanceID: 13904}
     - Class: 114
-      Script: {instanceID: 13854}
-    - Class: 114
-      Script: {instanceID: 13898}
-    - Class: 114
-      Script: {instanceID: 14494}
+      Script: {instanceID: 14500}
     - Class: 115
-      Script: {instanceID: 0}
-    - Class: 128
       Script: {instanceID: 0}
     - Class: 157
       Script: {instanceID: 0}
@@ -151,15 +248,15 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 11232}
     - Class: 114
-      Script: {instanceID: 11544}
+      Script: {instanceID: 11546}
     - Class: 114
-      Script: {instanceID: 12300}
+      Script: {instanceID: 12304}
     - Class: 114
-      Script: {instanceID: 12792}
+      Script: {instanceID: 12798}
     - Class: 114
-      Script: {instanceID: 13854}
+      Script: {instanceID: 13860}
     - Class: 114
-      Script: {instanceID: 14494}
+      Script: {instanceID: 14500}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -221,6 +318,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: AudioPlayableAsset
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: GameOverManager
   - hash:
       serializedVersion: 2
       Hash: 626925ef558787b2d85c809198164d19
@@ -371,6 +474,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Postprocessing.Runtime.dll
     namespaceName: UnityEngine.Rendering.PostProcessing
     className: Vignette
+  - hash:
+      serializedVersion: 2
+      Hash: 7334213037b9c17d92a8806a0b342b47
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: ZankiUIController
   - hash:
       serializedVersion: 2
       Hash: bd3cf68c8964d3c66d1c43f4f98508c9
@@ -536,6 +645,12 @@ ScriptsOnlyBuild:
   - hash:
       serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: ClearManager
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
     assemblyName: Unity.2D.Animation.Runtime.dll
     namespaceName: UnityEngine.U2D.Animation
     className: SpriteSkinEntity
@@ -619,7 +734,7 @@ ScriptsOnlyBuild:
     className: VerticalLayoutGroup
   - hash:
       serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+      Hash: 136c841a75f3a3934f26fd673b21cc34
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: GameManager
@@ -843,4 +958,6 @@ ScriptsOnlyBuild:
   scenePathNames:
   - Assets/Scenes/TitleScene.unity
   - Assets/Scenes/GameScene.unity
-  playerPath: C:/Users/human/Documents/UnityProjects/CollectionOfP2/CollectionOfP/SceneBuild/CollectionOfP.exe
+  - Assets/Scenes/GameOver.unity
+  - Assets/Scenes/GameClear.unity
+  playerPath: C:/Users/human/Documents/UnityProjects/CollectionOfP2/CollectionOfP/SceneBuild/TestBuild/CollectionOfP.exe

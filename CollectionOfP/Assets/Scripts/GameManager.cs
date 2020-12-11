@@ -70,8 +70,15 @@ public class GameManager : MonoBehaviour
 
     void Ready()
     {
-        
-       ChangeState(State.Game);
+        Debug.Log("Ready");
+        if (this.timer > 0)
+        {
+            timer = 0;
+        }
+        else
+        {
+            ChangeState(State.Game);
+        }
         
     }
 
@@ -106,7 +113,7 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            ChangeState(State.Game);
+            ChangeState(State.Ready);
         }
         
         
@@ -163,7 +170,7 @@ public class GameManager : MonoBehaviour
                 {
                     // ステートを切り替えた際に初期化が必要ならここに記述
                     // ReadyからGame開始まで３秒
-                    this.timer = 3f;
+                    //this.timer = 3f;
                 }
                 break;
 
@@ -178,8 +185,8 @@ public class GameManager : MonoBehaviour
                 {
                     // ステートを切り替えた際に初期化が必要ならここに記述
                     
-                    // 死んでから復活するまで４秒
-                    this.timer = 4f;
+                    // 死んでから復活するまで2秒
+                    this.timer = 2f;
 
                 }
                 break;
