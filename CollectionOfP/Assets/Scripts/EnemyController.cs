@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
-    
+
     Vector2 defaultPosition;  // 初期位置
     Quaternion defaultRotation;  // 初期向き
 
@@ -16,15 +16,18 @@ public class EnemyController : MonoBehaviour
 
     enum State
     {
-       Wait,
-       Found,
-       Chase,
-       Petrify,
+        Search,
+        Found,
+        Chase,
+        Petrify,
     }
     State state;
 
     float timer;
 
+    float speed = 3.0f;  // 敵の通常移動速度
+
+    Vector3 target;
 
 
     // Start is called before the first frame update
@@ -37,17 +40,20 @@ public class EnemyController : MonoBehaviour
         this.player = GameObject.Find("Player");
         this.rigidbody2D = GetComponent<Rigidbody2D>();
         this.animator = GetComponent<Animator>();
+
+        target = transform.position;
     }
 
     // 再配置＆再表示
     void Restart()
     {
         this.animator.SetInteger("State", 0);
+        this.state = State.Search;
 
-        // 再表示はできたけどアニメーションが変更されなくなっている！！！！
+
         this.transform.position = this.defaultPosition;  // 
         this.transform.rotation = this.defaultRotation;  // 
-        
+
     }
 
 
@@ -56,17 +62,19 @@ public class EnemyController : MonoBehaviour
     {
         
 
+        
 
         // GameManagerのStateがGame以外でもなにか動かしたい場合は
         // ここに処理を書くーーーーーーーーーーーーーー
 
         Debug.Log(GameManager.Instance.GetState());
         // GameManagerのStateがReadyの時に再配置を行う
-        if (GameManager.Instance.GetState() == GameManager.State.Ready)
+        if (GameManager.Instance.GetState() == GameManager.State.Reset)
         {
-            
+
             Restart();  // 再配置
-            
+
+
         }
 
         if (GameManager.Instance.GetState() != GameManager.State.Game)
@@ -77,24 +85,30 @@ public class EnemyController : MonoBehaviour
         // 敵の状態を分岐する
         switch (this.state)
         {
-            case State.Wait:
+            case State.Search:
                 {
-                    if (Input.GetKeyDown(KeyCode.K))
+                    
+
+                    float distance = Vector3.Distance(transform.position, this.player.transform.position);
+                    if (distance < 6 && distance > -6)
                     {
-                        float distance = Vector3.Distance(transform.position, this.player.transform.position);
+                        Debug.Log("発見");
+                        this.rigidbody2D.AddForce(Vector2.up * 130);  // 見つけた瞬間、上にミニジャンプする
+                        this.timer = 1;  // タイマーを1にセット
 
-                        if (distance < 11 && distance > -11)
-                        {
-                            Debug.Log("発見");
-                            this.rigidbody2D.AddForce(Vector2.up * 130);  // Kを押した瞬間に上にミニジャンプする
-                            this.timer = 1;  // タイマーを1にセット
+                        this.state = State.Found;
 
-                            this.state = State.Found;
-
-                            // 敵のアニメーション変更 (発見)
-                            this.animator.SetInteger("State", 1);
-                        }
+                        // 敵のアニメーション変更 (発見)
+                        this.animator.SetInteger("State", 1);
                     }
+                    else
+                    {
+                        transform.position = new Vector3(Mathf.Sin(Time.time) * 2.0f + target.x, target.y, target.z);
+                        //speed = speed * -1;
+                    }
+
+                    
+                    
                 }
                 break;
 
@@ -109,6 +123,15 @@ public class EnemyController : MonoBehaviour
                         // 敵のアニメーション変更 (突進)
                         this.animator.SetInteger("State", 2);
                     }
+                    //else if(Input.GetKeyDown(KeyCode.J))
+                    //{
+                        //this.state = State.Petrify;
+
+                        // 敵のアニメーション変更 (石化)
+                      //  this.animator.SetInteger("State", 3);
+                    //}
+
+
                 }
                 break;
 
@@ -117,20 +140,19 @@ public class EnemyController : MonoBehaviour
                     // 左側に移動
                     transform.Translate(-2f * Time.deltaTime, 0, 0);
 
-                    if (Input.GetKeyDown(KeyCode.I))
+                    
+                    //float distance = Vector3.Distance(transform.position, this.player.transform.position);
+
+                    if (Input.GetKeyDown(KeyCode.K))
                     {
-                        float distance = Vector3.Distance(transform.position, this.player.transform.position);
+                        Debug.Log("今、石化しているよ");
 
-                        if (distance < 5 && distance > -5)
-                        {
-                            Debug.Log("今、石化しているよ");
+                        this.state = State.Petrify;
 
-                            this.state = State.Petrify;
-
-                            // 敵のアニメーション変更 (石化)
-                            this.animator.SetInteger("State", 3);
-                        }
+                        // 敵のアニメーション変更 (石化)
+                        this.animator.SetInteger("State", 3);
                     }
+                    
                 }
                 break;
 
@@ -141,7 +163,7 @@ public class EnemyController : MonoBehaviour
                     {
                         Debug.Log("黒蛇に食われて消えた状態");
                         Invoke("ActiveFalse", 1.0f);
-                        
+
                     }
 
 
@@ -155,7 +177,6 @@ public class EnemyController : MonoBehaviour
     {
         transform.position = new Vector3(9999, 100, 9999);
     }
-
 
 
 }

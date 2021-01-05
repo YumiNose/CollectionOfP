@@ -7,7 +7,7 @@ public class GoalController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        //Invoke("OnTriggerStay2D", 1f);
     }
 
     // Update is called once per frame

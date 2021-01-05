@@ -5,10 +5,13 @@ ScriptsOnlyBuild:
     - CameraController2
     - ClearManager
     - EnemyController
+    - EnemyTController
     - GameManager
     - GameOverManager
     - GameOverR
     - GoalController
+    - HPController
+    - ParticleController
     - PlayerController
     - SaveManager
     - TitleManager
@@ -65,17 +68,17 @@ ScriptsOnlyBuild:
     - Class: 104
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 11232}
+      Script: {instanceID: 11234}
     - Class: 114
-      Script: {instanceID: 11546}
+      Script: {instanceID: 11548}
     - Class: 114
       Script: {instanceID: 12304}
     - Class: 114
-      Script: {instanceID: 12742}
+      Script: {instanceID: 12744}
     - Class: 114
-      Script: {instanceID: 13860}
+      Script: {instanceID: 13864}
     - Class: 114
-      Script: {instanceID: 14500}
+      Script: {instanceID: 14506}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -107,8 +110,6 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 28
       Script: {instanceID: 0}
-    - Class: 43
-      Script: {instanceID: 0}
     - Class: 48
       Script: {instanceID: 0}
     - Class: 81
@@ -116,17 +117,17 @@ ScriptsOnlyBuild:
     - Class: 104
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 11232}
+      Script: {instanceID: 11234}
     - Class: 114
-      Script: {instanceID: 11310}
+      Script: {instanceID: 11312}
     - Class: 114
-      Script: {instanceID: 11546}
+      Script: {instanceID: 11548}
     - Class: 114
       Script: {instanceID: 12304}
     - Class: 114
-      Script: {instanceID: 13860}
+      Script: {instanceID: 13864}
     - Class: 114
-      Script: {instanceID: 14500}
+      Script: {instanceID: 14506}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -177,13 +178,13 @@ ScriptsOnlyBuild:
     - Class: 104
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 11218}
+      Script: {instanceID: 11204}
     - Class: 114
-      Script: {instanceID: 11232}
+      Script: {instanceID: 11220}
     - Class: 114
-      Script: {instanceID: 11412}
+      Script: {instanceID: 11234}
     - Class: 114
-      Script: {instanceID: 11600}
+      Script: {instanceID: 11414}
     - Class: 114
       Script: {instanceID: 11638}
     - Class: 114
@@ -195,26 +196,36 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 12322}
     - Class: 114
-      Script: {instanceID: 12642}
+      Script: {instanceID: 12354}
     - Class: 114
-      Script: {instanceID: 12716}
+      Script: {instanceID: 12644}
     - Class: 114
-      Script: {instanceID: 13124}
+      Script: {instanceID: 12718}
     - Class: 114
-      Script: {instanceID: 13202}
+      Script: {instanceID: 13128}
     - Class: 114
-      Script: {instanceID: 13300}
+      Script: {instanceID: 13206}
     - Class: 114
-      Script: {instanceID: 13860}
+      Script: {instanceID: 13304}
     - Class: 114
-      Script: {instanceID: 13904}
+      Script: {instanceID: 13864}
     - Class: 114
-      Script: {instanceID: 14500}
+      Script: {instanceID: 13908}
+    - Class: 114
+      Script: {instanceID: 14280}
+    - Class: 114
+      Script: {instanceID: 14506}
+    - Class: 114
+      Script: {instanceID: 19344}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 157
       Script: {instanceID: 0}
     - Class: 196
+      Script: {instanceID: 0}
+    - Class: 198
+      Script: {instanceID: 0}
+    - Class: 199
       Script: {instanceID: 0}
     - Class: 212
       Script: {instanceID: 0}
@@ -246,17 +257,17 @@ ScriptsOnlyBuild:
     - Class: 104
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 11232}
+      Script: {instanceID: 11234}
     - Class: 114
-      Script: {instanceID: 11546}
+      Script: {instanceID: 11548}
     - Class: 114
       Script: {instanceID: 12304}
     - Class: 114
-      Script: {instanceID: 12798}
+      Script: {instanceID: 12800}
     - Class: 114
-      Script: {instanceID: 13860}
+      Script: {instanceID: 13864}
     - Class: 114
-      Script: {instanceID: 14500}
+      Script: {instanceID: 14506}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -276,6 +287,12 @@ ScriptsOnlyBuild:
     - Class: 224
       Script: {instanceID: 0}
   scriptHashData:
+  - hash:
+      serializedVersion: 2
+      Hash: 89f9a1b4c64db9559e39f4a2e3bfaadd
+    assemblyName: UnityEngine.UI.dll
+    namespaceName: UnityEngine.UI
+    className: Image
   - hash:
       serializedVersion: 2
       Hash: a1f19ad47d3094e235f21b74dfc423a8
@@ -396,12 +413,6 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.EventSystems
     className: TouchInputModule
-  - hash:
-      serializedVersion: 2
-      Hash: 89f9a1b4c64db9559e39f4a2e3bfaadd
-    assemblyName: UnityEngine.UI.dll
-    namespaceName: UnityEngine.UI
-    className: Image
   - hash:
       serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
@@ -578,6 +589,12 @@ ScriptsOnlyBuild:
     className: SpriteShape
   - hash:
       serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: EnemyTController
+  - hash:
+      serializedVersion: 2
       Hash: b8a5e8091ab0b8861d2add371082c5e0
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
@@ -620,7 +637,7 @@ ScriptsOnlyBuild:
     className: UIManager
   - hash:
       serializedVersion: 2
-      Hash: ec66b752723114f54fb66b5017cb0edb
+      Hash: 05ff223781c101119b5e60b3bed9aeec
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: PlayerController
@@ -672,6 +689,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
     className: TMP_SpriteAnimator
+  - hash:
+      serializedVersion: 2
+      Hash: bbf87be3a2532112ad0c7ced9b94e9a5
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: DemoWizard
   - hash:
       serializedVersion: 2
       Hash: a53651ee3996fbba20dfe0fce02f0b23
@@ -842,6 +865,12 @@ ScriptsOnlyBuild:
     className: TMP_StyleSheet
   - hash:
       serializedVersion: 2
+      Hash: dbb16444846aaac7e9b04a8ef34429b3
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: HPController
+  - hash:
+      serializedVersion: 2
       Hash: d5630f96bd5a6a6eed7e1754c3fb8703
     assemblyName: Unity.Postprocessing.Runtime.dll
     namespaceName: UnityEngine.Rendering.PostProcessing
@@ -954,6 +983,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: PlayableTrack
+  - hash:
+      serializedVersion: 2
+      Hash: 19858a5444f4d294828886fba02d50a3
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: ParticleController
   platform: 5
   scenePathNames:
   - Assets/Scenes/TitleScene.unity

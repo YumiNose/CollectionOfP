@@ -4,6 +4,8 @@
 TagManager:
   serializedVersion: 2
   tags:
+  - Enemy
+  - Ground
   - DeadArea
   - GoalPoint
   layers:
@@ -15,7 +17,7 @@ TagManager:
   - UI
   - 
   - 
-  - PT1
+  - Particle System
   - 
   - 
   - 
@@ -40,9 +42,12 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: bg1
+    uniqueID: 3888515617
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: PT
-    uniqueID: 1869747091
+  - name: Particle System
+    uniqueID: 2311828229
     locked: 0
