@@ -6,47 +6,64 @@ using UnityEngine.Events;
 public class ParticleController : MonoBehaviour
 {
     [SerializeField]
-    ParticleSystem pObject;
+    ParticleSystem pObject;  // パーティクルシステム
 
     //ここでパーティクルが停止される時間を指定
-    float particleDelayTime = .2f;
+    float particleDelayTime = 0.2f;
 
-    public GameObject Star_A;
+    [SerializeField]
+    public GameObject StarAPrefab;
 
-    GameObject Wave;
+    [SerializeField]
+    GameObject wave;
+
+
 
     // Start is called before the first frame update
     void Start()
     {
+        //this.wave = GameObject.Find("Wave");
         
     }
 
     void Awake()
     {
+        // 非アクティブ状態
         pObject.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.K) )//&& pObject.isStopped)
+        if (Input.GetKeyDown(KeyCode.X) )//&& pObject.isStopped)
         {
+            // アクティブ状態
             pObject.gameObject.SetActive(true);
-            pObject.Simulate(4.0f, true, false); //追記
+
+            pObject.Simulate(1.0f, true, false); //追記
             pObject.Play(); //追記
-            StartCoroutine(delay(particleDelayTime, () => 
+            
+
+            StartCoroutine(Delay(particleDelayTime, () => 
             {
+                // 非アクティブ状態
                 pObject.gameObject.SetActive(false);
+                
+
             }));
 
             //for Debug
-            Debug.Log("合わせた！");
+            Instantiate(StarAPrefab, wave.transform.position, transform.rotation);
+            Debug.Log("Instantiate");
         }
-        Instantiate(this.Star_A, this.Wave.transform.position, transform.rotation);
+        
+
+        //Destroy(this.pObject, 0.5f);
+
     }
 
 
-    IEnumerator delay(float waitTime, UnityAction action)
+    IEnumerator Delay(float waitTime, UnityAction action)
     {
         yield return new WaitForSeconds(waitTime);
         action();

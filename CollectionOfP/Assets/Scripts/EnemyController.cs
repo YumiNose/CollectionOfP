@@ -67,7 +67,8 @@ public class EnemyController : MonoBehaviour
         // GameManagerのStateがGame以外でもなにか動かしたい場合は
         // ここに処理を書くーーーーーーーーーーーーーー
 
-        Debug.Log(GameManager.Instance.GetState());
+        //Debug.Log(GameManager.Instance.GetState());
+
         // GameManagerのStateがReadyの時に再配置を行う
         if (GameManager.Instance.GetState() == GameManager.State.Reset)
         {
@@ -123,13 +124,13 @@ public class EnemyController : MonoBehaviour
                         // 敵のアニメーション変更 (突進)
                         this.animator.SetInteger("State", 2);
                     }
-                    //else if(Input.GetKeyDown(KeyCode.J))
-                    //{
-                        //this.state = State.Petrify;
+                    else if(Input.GetKeyDown(KeyCode.X))
+                    {
+                        this.state = State.Petrify;
 
-                        // 敵のアニメーション変更 (石化)
-                      //  this.animator.SetInteger("State", 3);
-                    //}
+                         //敵のアニメーション変更 (石化)
+                        this.animator.SetInteger("State", 3);
+                    }
 
 
                 }
@@ -143,7 +144,7 @@ public class EnemyController : MonoBehaviour
                     
                     //float distance = Vector3.Distance(transform.position, this.player.transform.position);
 
-                    if (Input.GetKeyDown(KeyCode.K))
+                    if (Input.GetKeyDown(KeyCode.X))
                     {
                         Debug.Log("今、石化しているよ");
 
@@ -159,7 +160,7 @@ public class EnemyController : MonoBehaviour
             case State.Petrify:
                 {
                     // 黒蛇 回収
-                    if (Input.GetKeyDown(KeyCode.P))
+                    if (Input.GetKeyDown(KeyCode.V))
                     {
                         Debug.Log("黒蛇に食われて消えた状態");
                         Invoke("ActiveFalse", 1.0f);
