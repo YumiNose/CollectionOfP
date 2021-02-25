@@ -53,7 +53,8 @@ public class ParticleController : MonoBehaviour
             }));
 
             //for Debug
-            Instantiate(StarAPrefab, wave.transform.position, transform.rotation);
+            GameObject obj = Instantiate(StarAPrefab, wave.transform.position, transform.rotation);
+            obj.transform.parent = wave.transform;
             Debug.Log("Instantiate");
         }
         

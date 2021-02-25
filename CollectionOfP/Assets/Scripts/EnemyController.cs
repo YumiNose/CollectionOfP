@@ -62,7 +62,6 @@ public class EnemyController : MonoBehaviour
     {
         
 
-        
 
         // GameManagerのStateがGame以外でもなにか動かしたい場合は
         // ここに処理を書くーーーーーーーーーーーーーー
@@ -105,7 +104,7 @@ public class EnemyController : MonoBehaviour
                     else
                     {
                         transform.position = new Vector3(Mathf.Sin(Time.time) * 2.0f + target.x, target.y, target.z);
-                        //speed = speed * -1;
+                        
                     }
 
                     
@@ -139,10 +138,8 @@ public class EnemyController : MonoBehaviour
             case State.Chase:
                 {
                     // 左側に移動
-                    transform.Translate(-2f * Time.deltaTime, 0, 0);
+                    transform.Translate(-2.0f * Time.deltaTime, 0, 0);
 
-                    
-                    //float distance = Vector3.Distance(transform.position, this.player.transform.position);
 
                     if (Input.GetKeyDown(KeyCode.X))
                     {

@@ -100,7 +100,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 3.5
   jumpForce: 300
-  hpController: {fileID: 0}
+  hpController: {fileID: 3238035124073051833, guid: ab1ea425106e7384da03cd29a5564f78,
+    type: 3}
 --- !u!50 &340004947271432024
 Rigidbody2D:
   serializedVersion: 4

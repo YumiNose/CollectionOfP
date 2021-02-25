@@ -5,22 +5,60 @@ using UnityEngine.SceneManagement;
 
 public class TitleManager : MonoBehaviour
 {
-    
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    bool isStartButtonPressed;
 
     // Update is called once per frame
     void Update()
     {
         
-        if(Input.GetKeyDown(KeyCode.Return))
+    }
+
+    // チュートリアルを押したときに呼ぶ関数
+    public void OnTuatrialButtonPressed()
+    {
+        if (!this.isStartButtonPressed)
         {
+            this.isStartButtonPressed = true;
+
             SceneManager.LoadScene("GameScene");
         }
-        
     }
+
+    // Stage1ボタンを押したときに呼ぶ関数
+    public void OnStage1ButtonPressed()
+    {
+        if (!this.isStartButtonPressed)
+        {
+            this.isStartButtonPressed = true;
+
+            SceneManager.LoadScene("Stage1");
+        }
+    }
+
+    // Stage2ボタンを押したときに呼ぶ関数
+    public void OnStage2ButtonPressed()
+    {
+        if (!this.isStartButtonPressed)
+        {
+            this.isStartButtonPressed = true;
+
+            SceneManager.LoadScene("Stage2");
+        }
+    }
+
+    // Quitボタンを押した時に呼ぶ関数
+    public void OnQuitButtonPressed()
+    {
+#if UNITY_EDITOR
+        // UnityEditorでゲームを実行している場合の終了方法
+        UnityEditor.EditorApplication.isPlaying = false;
+#elif UNITY_STANDALONE
+        // ビルド後のゲームを終了する方法
+        Application.Quit();
+#endif
+    }
+
+
+
 
 }
